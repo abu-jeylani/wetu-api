@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const multer = require("multer");
-const 
 
 const feedRoutes = require("./routes/feed");
 const authRoutes = require("./routes/auth");
@@ -86,5 +85,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-
