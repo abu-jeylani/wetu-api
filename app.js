@@ -12,7 +12,7 @@ const authRoutes = require("./routes/auth");
 const app = express();
 
 /**
- * multer configurations
+ * multer configurations for image upload
  */
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -34,11 +34,15 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-app.use(bodyParser.json());
 app.use(
   multer({ storage: fileStorage, fileFilter: fileFilter }).single("image")
 );
 app.use("/images", express.static(path.join(__dirname, "images")));
+app.use(bodyParser.json());
+
+/**
+ * cors configuration
+ */
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -46,6 +50,10 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
+
+/**
+ * routes
+ */
 
 app.use("/feed", feedRoutes);
 app.use("/auth", authRoutes);
@@ -63,6 +71,10 @@ app.use((error, req, res, next) => {
     data: data,
   });
 });
+
+/**
+ * mongodb connection made through mongoose
+ */
 
 mongoose
   .connect(process.env.DB_CONN_STRING)
