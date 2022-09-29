@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const multer = require("multer");
+const 
 
 const feedRoutes = require("./routes/feed");
 const authRoutes = require("./routes/auth");
@@ -38,6 +39,7 @@ app.use(
   multer({ storage: fileStorage, fileFilter: fileFilter }).single("image")
 );
 app.use("/images", express.static(path.join(__dirname, "images")));
+
 app.use(bodyParser.json());
 
 /**
@@ -78,9 +80,11 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(process.env.DB_CONN_STRING)
-  .then()
+  .then(() => {
+    app.listen(8080);
+  })
   .catch((err) => {
     console.log(err);
   });
 
-app.listen(8080);
+
