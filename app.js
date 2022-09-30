@@ -79,8 +79,15 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(process.env.DB_CONN_STRING)
-  .then(() => {
-    app.listen(8080);
+  .then((result) => {
+    const server = app.listen(8080);
+    const io = require("./socket").init(server);
+    io.on("connection", (socket) => {
+      console.log("a user connected");
+      socket.on("disconnect", () => {
+        console.log("user disconnected");
+      });
+    });
   })
   .catch((err) => {
     console.log(err);
