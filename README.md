@@ -6,19 +6,19 @@ This repository is currently on version 1. It includes basic endpoints that gets
 
 Requirements
 ------------
-**Node v18.8 or higher**
-**NPM**
-**Git**
+- Node v18.8 or higher
+- NPM
+- Git
 
 
 Technologies Used
 ----------------
-**Node.js**
-**Express.js**
-**MongoDB**
-**Mongoose**
-**Express-validator**
-**Multer**
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Express-validator
+- Multer
 
 
 To run the site locally:
