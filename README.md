@@ -20,12 +20,3 @@ Technologies Used
 - Express-validator
 - Multer
 
-
-To run the site locally
------------------------
-1.	Clone this repository
-2.	git clone https://github.com/abu-jeylani/wetu-rest-api 
-3.	npm install
-4.	npm start
-5.	Open http://localhost:8080/
-
